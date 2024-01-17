@@ -1,0 +1,60 @@
+.cdjScreen {
+    background-color: black;
+}
+
+.cdjHeader {
+    background-color: blue;
+
+    color: white;
+    font-size: 5vh;
+}
+
+.cdjList {
+    background-color: black;
+}
+
+.cdjScroll {
+    background-color: #ddd;
+}
+
+.cdjHandle {
+    background-color: #888;
+}
+
+.listOptions .listItem {
+    background-color: black;
+    
+    color: white;
+    font-family: 'PioneerFont';
+    font-size: 9vh;
+
+    text-overflow: clip;
+    white-space: nowrap; 
+
+    border-style: solid;
+    border-color: blue;
+    border-width: 1px;
+}
+
+.listOptions .listItem:hover,
+.listOptions .listItem:focus {
+    background-color: aliceblue;
+    color: black;
+
+    box-shadow:inset 0px 0px 5px 6px lightblue;
+}
+
+.cdjSubList {
+    background-color: aliceblue;
+
+    border-style: solid;
+    border-color: blue;
+    border-width: 1px;
+}
+
+.cdjFooter {
+    color: white;
+
+    border-top: solid blue;
+    border-width: 1px;
+}  

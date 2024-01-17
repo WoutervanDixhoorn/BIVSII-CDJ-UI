@@ -1,0 +1,13 @@
+version: "3"
+services:
+  bivsii_ui:
+    build: 
+      context: /bivsii_ui
+      dockerfile: Dockerfile.dev
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./bivsii_ui/src:/app/src:ro
+    environment:
+      - WATCHPACK_POLLING=true
+      - CHOKIDAR_USEPOLLING=true

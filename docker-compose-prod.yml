@@ -1,0 +1,8 @@
+version: "3"
+services:
+  bivsii_ui:
+    build: 
+      context: /bivsii_ui
+      dockerfile: Dockerfile.prod
+    ports:
+      - "8080:80"

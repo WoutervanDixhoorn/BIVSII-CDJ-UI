@@ -1,0 +1,17 @@
+@font-face {
+  font-family: PioneerFont;
+  src: url(VCR_MONO.ttf);
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+
+  font-family: 'PioneerFont'; /*Temp font, change into correct font*/
+}
