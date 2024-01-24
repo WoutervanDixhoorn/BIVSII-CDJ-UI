@@ -33,7 +33,7 @@ export default function CDJScrollbar({ scrollItemsLen, curScroll, scrollSens }: 
         }
     }, [curScroll])
 
-    const handleStyle = {
+    const handleStyle: React.CSSProperties = {
         top: `${handlePos}px`,
         height: `${handleHeight}px`
     };
