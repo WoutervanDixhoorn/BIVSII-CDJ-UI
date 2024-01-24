@@ -37,16 +37,29 @@ export default function CDJScrollbar({ scrollItemsLen, curScroll, setCurScroll, 
           setDragStartPos(event.clientY);
         }
     };
-    
+
+    const handleScrollClick = (event: React.MouseEvent) => {
+        if (scrollRef.current) {
+            const clickPos = event.clientY - scrollRef.current.getBoundingClientRect().top;
+            const barHeight = scrollRef.current.clientHeight;
+            const maxScroll = scrollItemsLen - 6;
+        
+            const scrollChange = (clickPos / barHeight) * maxScroll * scrollSens;
+
+            setCurScroll((prev) => clamp(scrollChange, 0, maxScroll * scrollSens));
+        }
+        event.preventDefault();
+    };
+
     useEffect(() => {
         const cleanup = () => {
-            window.removeEventListener("mousemove", handleMouseMove);
-            window.removeEventListener("mouseup", handleMouseUp);
+            window.removeEventListener("pointermove", handleMouseMove);
+            window.removeEventListener("pointerup", handleMouseUp);
         };
         
         if (isDragging) {
-            window.addEventListener("mousemove", handleMouseMove);
-            window.addEventListener("mouseup", handleMouseUp);
+            window.addEventListener("pointermove", handleMouseMove);
+            window.addEventListener("pointerup", handleMouseUp);
             return cleanup;
         }
     }, [isDragging, handleMouseUp]);
@@ -78,13 +91,13 @@ export default function CDJScrollbar({ scrollItemsLen, curScroll, setCurScroll, 
     
     return (
         <>
-            <div className="cdjScroll" ref={scrollRef}>
+            <div className="cdjScroll" ref={scrollRef} onPointerDown={handleScrollClick}>
                 <div className="cdjHandle" 
                 style={handleStyle} 
                 ref={handleRef}
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUp}
+                onPointerDown={handleMouseDown}
+                onPointerMove={handleMouseMove}
+                onPointerUp={handleMouseUp}
                 ></div>
             </div>
         </>

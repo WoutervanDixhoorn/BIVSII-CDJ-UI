@@ -7,7 +7,7 @@ import { useScrollbar } from "./useScrollbar";
 const AllListItems: string[] = ["[TICKETS]", "[PHOTO'S]", "[CONTACT]", "[PROJECTS]", "[NEW PROJECTS]", "", "Hidden!", "Hidden2!","[TICKETS]", "[PHOTO'S]", "[CONTACT]", "[PROJECTS]", "[NEW PROJECTS]" ];
 
 export default function CDJList() {
-  const scrollSens = 100;
+  const scrollSens = 10;
   const { curScroll, setCurScroll, list, handleWheel } = useScrollbar(AllListItems, scrollSens, 6);
   
   return (
