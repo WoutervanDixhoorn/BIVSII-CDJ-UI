@@ -8,12 +8,12 @@ const AllListItems: string[] = ["[TICKETS]", "[PHOTO'S]", "[CONTACT]", "[PROJECT
 
 export default function CDJList() {
   const scrollSens = 100;
-  const { curScroll, list, handleWheel } = useScrollbar(AllListItems, scrollSens, 6);
+  const { curScroll, setCurScroll, list, handleWheel } = useScrollbar(AllListItems, scrollSens, 6);
   
   return (
     <>
       <div className="cdjList" onWheel={handleWheel}>
-        <CDJScrollbar scrollItemsLen={AllListItems.length} curScroll={curScroll} scrollSens={scrollSens}/>
+        <CDJScrollbar scrollItemsLen={AllListItems.length} curScroll={curScroll} setCurScroll={setCurScroll} scrollSens={scrollSens}/>
         <div className="listOptions">
             {
               list.map((item: string, index: number) => {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { sliceArray, clamp } from '../Util';
 
 //TODO: Make initial items
@@ -10,8 +10,11 @@ export function useScrollbar(initialItems: Array<string>, scrollSens: number, it
     setCurScroll((prev) =>
       clamp(prev + event.deltaY, 0, (initialItems.length - itemsShowing) * scrollSens)
     );
-    setList(sliceArray(initialItems, curScroll / scrollSens));
   };
 
-  return { curScroll, list, handleWheel };
+  useEffect(() => {
+    setList(sliceArray(initialItems, curScroll / scrollSens));
+  }, [curScroll]);
+
+  return { curScroll, setCurScroll, list, setList, handleWheel };
 }
