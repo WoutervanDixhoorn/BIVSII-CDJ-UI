@@ -1,34 +1,44 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-function clamp(value: number, min: number, max: number) {
-    return Math.min(Math.max(value, min), max);
+interface CDJScrollbarProps {
+  scrollItemsLen: number;
+  curScroll: number;
 }
 
-export default function CDJScrollbar({scrollLength, currentScroll}: {scrollLength: number, currentScroll: number}) {
+export default function CDJScrollbar({ scrollItemsLen: scrollItemsLength, curScroll }: CDJScrollbarProps) {
     const scrollRef = useRef<HTMLDivElement>(null);
     const handleRef = useRef<HTMLDivElement>(null);
-    
-    const [scrollPos, setScrollPos] = useState(0);
+
+    const [handlePos, setHandlePos] = useState(0);
+    const [handleHeight, setHandleHeight]= useState(200);
 
     useEffect(() => {
-        if (scrollRef.current && handleRef.current) {
-            let maxScroll = scrollLength - 6;
-            let normScroll = currentScroll !== 0 ? currentScroll / maxScroll : 0;
-            
-            const scrollHeight = scrollRef.current.clientHeight;
-            setScrollPos(clamp((scrollHeight * normScroll - (handleRef.current.clientHeight/2)), 0, (scrollHeight - handleRef.current.clientHeight)));
-        }
-    }, [currentScroll]);
+        if (scrollRef.current && handleRef.current){
+            const barHeight = scrollRef.current.clientHeight;
 
+            //Calc handle height
+            const contentHeight = ((barHeight/6)*scrollItemsLength);
+            const visibleContentRatio = barHeight / contentHeight;
+            setHandleHeight(visibleContentRatio * barHeight);
+
+            //Calc handle pos
+            const maxScroll = scrollItemsLength - 6;
+            const normScroll = curScroll !== 0 ? curScroll / maxScroll : 0;
+            const hPos = (barHeight - handleHeight) * normScroll;
+
+            setHandlePos(hPos);
+        }
+    }, [curScroll])
 
     const handleStyle = {
-        top: `${scrollPos}px`
+        top: `${handlePos}px`,
+        height: `${handleHeight}px`
     };
     
     return (
         <>
             <div className="cdjScroll" ref={scrollRef}>
-                <div className="cdjHandle" style={handleStyle} ref={handleRef}></div>
+                <div className="cdjHandle" style={handleStyle} ref={handleRef} ></div>
             </div>
         </>
     );
