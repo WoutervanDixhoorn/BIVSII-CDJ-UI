@@ -10,24 +10,18 @@ const AllListItems: string[] = ["[TICKETS]", "[PHOTO'S]", "[CONTACT]", "[PROJECT
 
 export default function CDJList() {
   const scrollSens = 100;
-  const [scroll, setScroll] = useState(0);
   const [curScroll, setCurScroll] = useState(0);
-
   const [list, setList] = useState(sliceArray(AllListItems, 0));
 
-  useEffect(() => {
-    setList(sliceArray(AllListItems, curScroll));
-  }, [curScroll]);
-
-  const handleSroll = (event: React.WheelEvent) => {
-    setScroll(prev => clamp((prev += event.deltaY), 0, (AllListItems.length-6)*scrollSens));
-    setCurScroll(Math.round(scroll / scrollSens));
+  const handleWheel = (event: React.WheelEvent) => {
+    setCurScroll(prev => clamp((prev += event.deltaY), 0, (AllListItems.length - 6) * scrollSens));
+    setList(sliceArray(AllListItems, (curScroll/scrollSens)));
   };
   
   return (
     <>
-      <div className="cdjList" onWheel={handleSroll}>
-        <CDJScrollbar scrollItemsLen={AllListItems.length} curScroll={curScroll}/>
+      <div className="cdjList" onWheel={handleWheel}>
+        <CDJScrollbar scrollItemsLen={AllListItems.length} curScroll={curScroll} scrollSens={scrollSens}/>
         <div className="listOptions">
             {
               list.map((item: string, index: number) => {
