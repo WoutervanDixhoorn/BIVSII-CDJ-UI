@@ -8,10 +8,10 @@ export default function CDJList() {
 
   return (
     <>
-        <div className="cdjList" onWheel={scrollContext.handleWheel}>
-          <CDJScrollbar/>
-          <CDJListRenderer />
-        </div>
+      <div className="cdjList" onWheel={scrollContext.handleWheel}>
+        <CDJScrollbar/>
+        <CDJListRenderer />
+      </div>
     </>
   )
 }

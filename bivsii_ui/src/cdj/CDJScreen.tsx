@@ -1,6 +1,7 @@
 import CDJFooter from "./CDJFooter";
 import CDJHeader from "./CDJHeader";
 import CDJList from "./list/CDJList";
+import CDJSubList from "./list/CDJSubList";
 
 import ScrollContextProvider from "./list/scrollbar/useScrollContext";
 
@@ -22,6 +23,7 @@ export default function CDJScreen() {
                 <ScrollContextProvider initialList={AllListItems} scrollSensitivity={10}>
                   <CDJList />
                 </ScrollContextProvider>
+                <CDJSubList />
             </div>
             
             <CDJFooter />
