@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import { useScrollbar } from "./useScrollbar";
+import useScrollbar from "./useScrollbar";
 
 export default function CDJScrollbar() {
     const scrollRef = useRef<HTMLDivElement>(null);

@@ -1,4 +1,4 @@
-import CDJListRenderer from "./CDJListRenderer";
+import CDJListItemRenderer from "./CDJListItemRenderer";
 import CDJScrollbar from "./scrollbar/CDJScrollbar";
 
 import { useScrollContext } from "./scrollbar/useScrollContext";
@@ -10,7 +10,7 @@ export default function CDJList() {
     <>
       <div className="cdjList" onWheel={scrollContext.handleWheel}>
         <CDJScrollbar/>
-        <CDJListRenderer />
+        <CDJListItemRenderer />
       </div>
     </>
   )

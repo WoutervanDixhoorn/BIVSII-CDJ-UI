@@ -17,16 +17,19 @@ export default function CDJScreen() {
     return (
       <>
         <div className="cdjScreen">
-            <CDJHeader title="[BIVSII]"/>
+          <CDJHeader title="[BIVSII]"/>
 
-            <div className="centerMenu">
-                <ScrollContextProvider initialList={AllListItems} scrollSensitivity={10}>
-                  <CDJList />
-                </ScrollContextProvider>
-                <CDJSubList />
-            </div>
-            
-            <CDJFooter />
+          <div className="centerMenu">
+            <ScrollContextProvider 
+              initialList={AllListItems} 
+              scrollSensitivity={100}
+            >
+              <CDJList />
+            </ScrollContextProvider>
+            <CDJSubList />
+          </div>
+          
+          <CDJFooter />
         </div>
       </>
     );

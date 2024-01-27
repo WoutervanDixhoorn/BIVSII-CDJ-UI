@@ -9,7 +9,7 @@ type scrollbarProps = {
   handleRef: React.RefObject<HTMLDivElement>;
 }
 
-export function useScrollbar({scrollRef, handleRef}: scrollbarProps) {
+export default function useScrollbar({scrollRef, handleRef}: scrollbarProps) {
   const scrollContext = useScrollContext();
 
   const handleMouseDown = (event: React.MouseEvent) => {

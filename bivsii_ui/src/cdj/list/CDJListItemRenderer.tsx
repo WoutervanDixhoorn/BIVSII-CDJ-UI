@@ -2,7 +2,7 @@ import CDJListItem from "./CDJListItem";
 
 import { useScrollContext } from "./scrollbar/useScrollContext";
 
-export default function CDJListRenderer() {
+export default function CDJListItemRenderer() {
     const scrollContext = useScrollContext();
 
     return (
