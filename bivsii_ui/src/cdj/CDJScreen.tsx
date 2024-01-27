@@ -1,10 +1,15 @@
 import CDJFooter from "./CDJFooter";
 import CDJHeader from "./CDJHeader";
-import CDJList from "./CDJList";
-import CDJSubList from "./CDJSubList";
+import CDJList from "./list/CDJList";
+
+import ScrollContextProvider from "./list/scrollbar/useScrollContext";
 
 import './style/cdjScreenStyle.css'
 import './style/cdjScreenPos.css'
+
+
+//TODO: Replace with fetch and maybe move somewhere else
+const AllListItems: string[] = ["[TICKETS]", "[PHOTO'S]", "[CONTACT]", "[PROJECTS]", "[NEW PROJECTS]", "", "Hidden!", "Hidden2!","[TICKETS]", "[PHOTO'S]", "[CONTACT]", "[PROJECTS]", "[NEW PROJECTS]" ];
 
 export default function CDJScreen() {
 
@@ -14,8 +19,9 @@ export default function CDJScreen() {
             <CDJHeader title="[BIVSII]"/>
 
             <div className="centerMenu">
-                <CDJList />
-                <CDJSubList />
+                <ScrollContextProvider initialList={AllListItems} scrollSensitivity={10}>
+                  <CDJList />
+                </ScrollContextProvider>
             </div>
             
             <CDJFooter />
