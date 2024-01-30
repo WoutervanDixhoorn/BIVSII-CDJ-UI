@@ -105,11 +105,11 @@ export default function useScrollbar({scrollRef, handleRef}: scrollbarProps) {
   };
 
   useEffect(() => {
-    const listOptions = document.querySelector('.listOptions');
+    const listOptions = document.querySelector('#listOptions');
     if(!listOptions) return;
 
     const listItemHeight = listOptions.clientHeight / listOptions.children.length;
-    const listItems = document.querySelectorAll('.listItem') as NodeListOf<HTMLElement>;
+    const listItems = document.querySelectorAll('#listItem') as NodeListOf<HTMLElement>;
 
     listItems.forEach(item => {
       item.style.height = `${listItemHeight}px`;

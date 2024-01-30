@@ -8,6 +8,8 @@
 
     overflow: hidden;
     position: relative;
+
+    background-color: $backgroundColor;
 }
 
 .listOptions {
@@ -17,44 +19,38 @@
     height: 100%;
     width: calc(100% - 40px);
     margin-left: 40px;
-}
 
-.listOptions .listItem {
-    flex: 1 1 0px;
-    padding: 1% 2%;
-    padding-left: 1vw;
-
-    text-align: left;
-    align-items: center;
-
-    box-sizing: border-box;
-
-    flex-grow: 1;
-}
-
-.cdjList {
-    background-color: black;
-}
-
-.listOptions .listItem {
-    background-color: black;
+    .listItem {
+        flex: 1 1 0px;
+        padding: 1% 2%;
+        padding-left: 1vw;
     
-    color: white;
-    font-family: 'PioneerFont';
-    font-size: 9vh;
+        text-align: left;
+        align-items: center;
+    
+        box-sizing: border-box;
+    
+        flex-grow: 1;
 
-    text-overflow: clip;
-    white-space: nowrap; 
+        background-color: black;
+        
+        color: white;
+        font-family: 'PioneerFont';
+        font-size: 9vh;
+    
+        text-overflow: clip;
+        white-space: nowrap; 
+    
+        border-style: solid;
+        border-color: blue;
+        border-width: 1px;
 
-    border-style: solid;
-    border-color: blue;
-    border-width: 1px;
-}
+        &:hover,
+        &:focus {
+            background-color: aliceblue;
+            color: black;
 
-.listOptions .listItem:hover,
-.listOptions .listItem:focus {
-    background-color: aliceblue;
-    color: black;
-
-    box-shadow:inset 0px 0px 5px 6px lightblue;
+            box-shadow: inset 0px 0px 5px 6px lightblue;
+        }
+    }
 }

@@ -4,7 +4,7 @@ export default function CDJListItem({itemText}: {itemText: string}) {
 
     return (
       <>
-        <button className={styles.listItem}>{ itemText }</button>
+        <button className={styles.listItem} id="listItem">{ itemText }</button>
       </>
     )
 }

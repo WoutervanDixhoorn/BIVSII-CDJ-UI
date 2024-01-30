@@ -8,7 +8,7 @@ export default function CDJListItemRenderer() {
     const scrollContext = useScrollContext();
 
     return (
-        <div className={styles.listOptions}>
+        <div className={styles.listOptions} id="listOptions">
             {
             scrollContext.list.map((item: string, index: number) => {
                 return <CDJListItem itemText={item} key={index}/>;

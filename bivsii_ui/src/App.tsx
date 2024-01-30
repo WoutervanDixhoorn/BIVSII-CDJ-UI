@@ -1,6 +1,6 @@
 import CDJScreen from '@/components/cdjScreen/CDJScreen';
 
-import './style/App.css'
+import './style/App.scss'
 
 function App() {
   return (

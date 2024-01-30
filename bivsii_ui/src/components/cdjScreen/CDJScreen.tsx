@@ -5,7 +5,7 @@ import CDJSubList from "@/components/cdjSubList/CDJSubList";
 
 import ScrollContextProvider from "@/hooks/useScrollContext";
 
-import classes from './cdjScreen.module.scss';
+import styles from './cdjScreen.module.scss';
 
 //TODO: Replace with fetch and maybe move somewhere else
 const AllListItems: string[] = ["[TICKETS]", "[PHOTO'S]", "[CONTACT]", "[PROJECTS]", "[NEW PROJECTS]", "", "Hidden!", "", "Hidden2!", "[TICKETS]", "[PHOTO'S]", "[CONTACT]", "[PROJECTS]", "[NEW PROJECTS]" ];
@@ -14,10 +14,10 @@ export default function CDJScreen() {
 
     return (
       <>
-        <div className={classes.cdjScreen}>
+        <div className={styles.cdjScreen}>
           <CDJHeader title="[BIVSII]"/>
 
-          <div className={classes.centerMenu}>
+          <div className={styles.centerMenu}>
             <ScrollContextProvider 
               initialList={AllListItems} 
               scrollSensitivity={100}

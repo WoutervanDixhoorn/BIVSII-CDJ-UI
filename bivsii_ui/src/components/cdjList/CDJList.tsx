@@ -7,7 +7,7 @@ import styles from "./cdjList.module.scss";
 
 export default function CDJList() {
   const scrollContext = useScrollContext();
-
+  
   return (
     <>
       <div className={styles.cdjList} onWheel={scrollContext.handleWheel}>
