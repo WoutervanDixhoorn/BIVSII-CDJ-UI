@@ -1,0 +1,18 @@
+@import '../../style/cdjStyleVars.scss';
+
+.cdjHeader {
+    display: flex;
+    padding-left: 1vw;
+    height: 10%;
+
+    align-items: center;
+
+    z-index: 2;
+}
+
+.cdjHeader {
+    background-color: blue;
+
+    color: white;
+    font-size: 5vh;
+}

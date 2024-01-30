@@ -1,0 +1,60 @@
+@import '../../style/cdjStyleVars.scss';
+
+.cdjList {
+    flex: 5;
+
+    display: flex;
+    flex-direction: row; 
+
+    overflow: hidden;
+    position: relative;
+}
+
+.listOptions {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    width: calc(100% - 40px);
+    margin-left: 40px;
+}
+
+.listOptions .listItem {
+    flex: 1 1 0px;
+    padding: 1% 2%;
+    padding-left: 1vw;
+
+    text-align: left;
+    align-items: center;
+
+    box-sizing: border-box;
+
+    flex-grow: 1;
+}
+
+.cdjList {
+    background-color: black;
+}
+
+.listOptions .listItem {
+    background-color: black;
+    
+    color: white;
+    font-family: 'PioneerFont';
+    font-size: 9vh;
+
+    text-overflow: clip;
+    white-space: nowrap; 
+
+    border-style: solid;
+    border-color: blue;
+    border-width: 1px;
+}
+
+.listOptions .listItem:hover,
+.listOptions .listItem:focus {
+    background-color: aliceblue;
+    color: black;
+
+    box-shadow:inset 0px 0px 5px 6px lightblue;
+}

@@ -1,11 +1,12 @@
 import { createContext, useContext, useState } from "react";
 
-import { clamp, sliceArray } from "../../../Util";
+import { clamp, sliceArray } from "@/Util.tsx";
 
 type scrollContextProviderProps = {
     children: React.ReactNode;
     initialList: string[];
     scrollSensitivity: number;
+    totalItemsToShow: number;
 }
 
 type scrollContext = {
@@ -14,45 +15,51 @@ type scrollContext = {
     handleHeight: number;
     setHandleHeight: React.Dispatch<React.SetStateAction<number>>;
 
-    curScroll: number;
-    setCurScroll: React.Dispatch<React.SetStateAction<number>>;
-
-    list: string[];
-    setList: React.Dispatch<React.SetStateAction<string[]>>
-    totalListCount: number;
-
-    handleWheel: (event: React.WheelEvent) => void;
-    scrollSens: number;
-
     isDragging: boolean;
     setIsDragging: React.Dispatch<React.SetStateAction<boolean>>;
     dragStartPos: number;
     setDragStartPos: React.Dispatch<React.SetStateAction<number>>;
 
+    curScroll: number;
+    setCurScroll: React.Dispatch<React.SetStateAction<number>>;
+
+    list: string[];
     updateList: () => void;
+    totalListCount: number;
+    totalItemsToShow: number;
+
+    handleWheel: (event: React.WheelEvent) => void;
+    scrollSens: number;
+    
 };
 
 export const scrollContext = createContext<scrollContext | null>(null);
 
 export default function ScrollContextProvider(props: scrollContextProviderProps) {
-    const [list, setList] = useState(props.initialList);
-    const totalListCount = props.initialList.length;
-    const [curScroll, setCurScroll] = useState(0);
-    const scrollSens = props.scrollSensitivity;
-
     const [handlePos, setHandlePos] = useState(0);
     const [handleHeight, setHandleHeight]= useState(200);
     const [isDragging, setIsDragging] = useState(false);
     const [dragStartPos, setDragStartPos] = useState(0);
 
+    const [curScroll, setCurScroll] = useState(0);
+
+    const [list, setList] = useState(props.initialList);
+    const totalListCount = props.initialList.length;
+    const totalItemsToShow = props.totalItemsToShow; //TODO: Maybe dont fix this value here?
+    
+    const scrollSens = props.scrollSensitivity;
+
     const handleWheel = (event: React.WheelEvent) => {
         setCurScroll((prev) =>
-          clamp(prev + event.deltaY, 0, (totalListCount - 6) * scrollSens)
+          clamp(prev + event.deltaY, 0, (totalListCount - totalItemsToShow) * scrollSens)
         );
     };
 
     const updateList = () => {
-        setList(sliceArray(props.initialList, curScroll / scrollSens));
+        while(props.initialList.length < totalItemsToShow)
+            props.initialList.push("");
+
+        setList(sliceArray(props.initialList, curScroll / scrollSens, totalItemsToShow));
     };
 
     return (
@@ -62,18 +69,21 @@ export default function ScrollContextProvider(props: scrollContextProviderProps)
                 setHandlePos,
                 handleHeight,
                 setHandleHeight,
-                curScroll,
-                setCurScroll,
-                list,
-                setList,
-                totalListCount,
-                handleWheel,
-                scrollSens,
-                updateList,
+
                 isDragging,
                 setIsDragging,
                 dragStartPos,
-                setDragStartPos
+                setDragStartPos,
+
+                curScroll,
+                setCurScroll,
+                list,
+                updateList,
+                totalListCount,
+                totalItemsToShow,
+
+                handleWheel,
+                scrollSens 
             }}
         >
             {props.children}

@@ -1,4 +1,4 @@
-import CDJScreen from './cdj/CDJScreen'
+import CDJScreen from '@/components/cdjScreen/CDJScreen';
 
 import './style/App.css'
 

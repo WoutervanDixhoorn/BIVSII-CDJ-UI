@@ -1,4 +1,4 @@
-export function sliceArray(arr: any[], startIndex: number, sliceLength: number = 6) {
+export function sliceArray(arr: any[], startIndex: number, sliceLength: number) {
     const length = arr.length;
     const endIndex = (startIndex + sliceLength) % length;
 

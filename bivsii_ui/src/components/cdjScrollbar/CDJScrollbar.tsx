@@ -1,6 +1,8 @@
 import { useRef } from "react";
 
-import useScrollbar from "./useScrollbar";
+import useScrollbar from "@/hooks/useScrollbar";
+
+import styles from "./cdjScrollbar.module.scss";
 
 export default function CDJScrollbar() {
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -13,8 +15,8 @@ export default function CDJScrollbar() {
     
     return (
         <>
-            <div className="cdjScroll" ref={scrollRef} onPointerDown={handleScrollClick}>
-                <div className="cdjHandle" 
+            <div className={styles.cdjScroll} ref={scrollRef} onPointerDown={handleScrollClick}>
+                <div className={styles.cdjHandle} 
                     style={handleStyle} 
                     ref={handleRef}
                     onPointerDown={handleMouseDown}
